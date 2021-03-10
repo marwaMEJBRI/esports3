@@ -37,7 +37,7 @@ class MatchesController < ApplicationController
     #     end
     #   end
     #   def match_params   
-    #     params.require(:match).permit(:title, :description)   
+    #     params.require(:match).permit(:name, :result, :Broadcast_link, :start_date, :end_date)   
     #   end   
     #   def new
     #     @match = Match.new
