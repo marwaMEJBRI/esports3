@@ -1,2 +1,39 @@
 <h1>new match page</h1>
 
+<div class="container">   
+  <%= simple_form_for @match, url: {action: :create} do |f| %>   
+      <div>   
+        <h3>Add a match</h3>   
+      </div>   
+      <div>   
+        <p>   
+          <%= "<div>#{@match.errors.full_messages.first}</div>".html_safe if @match.errors.any? %>   
+        <div>   
+            <label>name</label>   
+              <%= f.text_field :name %>   
+        </div>   
+  
+        <div>   
+             <label>Result</label>   
+             <%= f.text_field :Result %>   
+        </div>   
+        <div>   
+        <label>Brodcast Link</label>   
+        <%= f.text_field :Brodcast_Link %>   
+       </div>
+       <div>   
+       <label>start date</label>   
+       <%= f.text_field :start_date %>   
+        </div>
+        <div>   
+        <label> End date</label>   
+        <%= f.text_field :End_date %>   
+        </div>
+         </p>   
+      </div>   
+      <div>   
+        <%= link_to 'Back', { controller: 'matches', action: 'index'} %>   
+        <%= f.submit 'Create match' %>   
+      </div>   
+  <% end %>   
+</div>  

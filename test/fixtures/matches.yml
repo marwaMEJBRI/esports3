@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  result: MyString
+  brodcast_link: MyString
+  start_date: 2021-03-10 18:10:35
+  End_date: 2021-03-10 18:10:35
+
+two:
+  name: MyString
+  result: MyString
+  brodcast_link: MyString
+  start_date: 2021-03-10 18:10:35
+  End_date: 2021-03-10 18:10:35
