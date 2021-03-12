@@ -1,48 +1,51 @@
 class MatchesController < ApplicationController
-    before_action :set_instrument, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, except: [:index, :show]
     
     def index
           @matches = Match.all
     end
       def create
-
         @match = Match.new(params[:id])
-        
-        respond_to do |format|
+        # respond_to do |format|
           if @match.save
-            flash[:notice] = 'match was successfully created.'
-            format.html { redirect_to(@match) }
-            format.xml { render xml: @match, status: :created, location: @match }
+            # flash[:notice] = 'match was successfully created.'
+            # format.html { redirect_to(@match) }
+            # format.xml { render xml: @match, status: :created, location: @match }
+            flash[:notice] = "Successfully created match!"
+            redirect_to matches_path(@match)
           else
-            format.html { render action: "new" }
-            format.xml { render xml: @match.errors, status: :unprocessable_entity }
+            # format.html { render action: "new" }
+            # format.xml { render xml: @match.errors, status: :unprocessable_entity }
+            flash[:notice] = "Error creating new match!"
+            render :new
           end
         end
-        def new
+      
+      def new
           @match = Match.new
-        end
+       end
         
-      end
+      
       def show
         @match = Match.find(params[:id])
       end
       def destroy
-        @match = Match.find(params[:id])
-        if @match.destroy
-          flash[:success] = 'match was successfully deleted.'
-          redirect_to matches_url
-        else
-          flash[:error] = 'Something went wrong'
-          redirect_to matches_url
-        end
+        # @match = 
+        Match.find(params[:id]).destroy
+        redirect_to matches_url
+        # =begin 
+        # if @match.destroy
+        #   flash[:success] = 'match was successfully deleted.'
+        #   redirect_to matches_url
+        # else
+        #   flash[:error] = 'Something went wrong'
+        # end =end
       end
+
       def match_params   
-        params.require(:match).permit(:name, :result, :Broadcast_link, :start_date, :end_date)   
+        params.require(:match).permit(:name, :result, :broadcast_link, :start_date, :end_date)   
       end   
-      def new
-        @match = Match.new
-      end
+      
       def edit   
         @product = Product.find(params[:id])   
       end   
@@ -56,5 +59,6 @@ class MatchesController < ApplicationController
             render 'edit'
           end
       end
-      
-end
+    
+    end
+  
