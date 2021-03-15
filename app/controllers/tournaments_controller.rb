@@ -1,5 +1,4 @@
 class TournamentsController < ApplicationController
-     before_action :set_instrument, only: [:show, :edit, :update, :destroy]
     #  before_action :authenticate_user!, except: [:index, :show]
     def index
            @tournaments = Tournament.all
@@ -43,7 +42,7 @@ class TournamentsController < ApplicationController
          @tournament = Tournament.new
        end
        def edit   
-         @product = Product.find(params[:id])   
+         @tournament = Tournament.find(params[:id])   
        end   
        def update
          @tournament = Tournament.find(params[:id])

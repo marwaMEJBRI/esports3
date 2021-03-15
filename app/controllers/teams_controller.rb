@@ -48,7 +48,7 @@ class TeamsController < ApplicationController
         params.require(:team).permit(:name)   
       end   
       def edit   
-        @product = Product.find(params[:id])   
+        @team = Team.find(params[:id])   
       end   
       def update
         @team = Team.find(params[:id])
