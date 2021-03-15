@@ -1,12 +1,12 @@
 class TournamentsController < ApplicationController
      before_action :set_instrument, only: [:show, :edit, :update, :destroy]
-     before_action :authenticate_user!, except: [:index, :show]
+    #  before_action :authenticate_user!, except: [:index, :show]
     def index
            @tournaments = Tournament.all
     end
       def create
 
-         @tournaments = tournament.new(params[:id])
+         @tournament = Tournament.new(params[:id])
         
          respond_to do |format|
            if @tournament.save

@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    
+     
     def index
           @matches = Match.all
     end
@@ -27,19 +27,22 @@ class MatchesController < ApplicationController
         
       
       def show
-        @match = Match.find(params[:id])
+        begin
+          @match = Match.find(params[:id])
+        rescue ActiveRecord::RecordNotFound => e
+          match = nil
+      end
+
       end
       def destroy
-        # @match = 
-        Match.find(params[:id]).destroy
-        redirect_to matches_url
-        # =begin 
-        # if @match.destroy
-        #   flash[:success] = 'match was successfully deleted.'
-        #   redirect_to matches_url
-        # else
-        #   flash[:error] = 'Something went wrong'
-        # end =end
+         @match = Match.find(params[:id])
+         redirect_to matches_url
+         if @match.destroy
+           flash[:success] = 'match was successfully deleted.'
+           redirect_to matches_url
+         else
+           flash[:error] = 'Something went wrong'
+         end 
       end
 
       def match_params   
