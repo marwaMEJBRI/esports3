@@ -1,3 +1,4 @@
+
 # PostgreSQL. Versions 9.3 and up are supported.
 #
 # Install the pg driver:
@@ -28,7 +29,7 @@ development:
   encoding: unicode
   pool: 5
   username: postgres
-  password: 'root'
+  password: '123'
   host: localhost
 
   # The specified database role being used to connect to postgres.
