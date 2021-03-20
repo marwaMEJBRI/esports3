@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<h1 class="font-semibold text-4xl text-gray-700 my-8">users</h1>
+<div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+    <table class="items-center w-full bg-transparent border-collapse">
+      <thead>
+        <tr>
+          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Name</th>
+
+          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left", colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= user.email %></td>
+             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= link_to 'Show', users_path %></td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= link_to 'Edit', edit_user_registration_path(user) %></td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= link_to 'New user', users_path %>
