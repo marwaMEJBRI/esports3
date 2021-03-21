@@ -20,11 +20,15 @@ class TournamentsController < ApplicationController
          def new
            @tournament = Tournament.new
          end
-        
        end
        def show
-         @tournament = Tournament.find(params[:id])
-       end
+        begin
+          @tournament = Tournament.find(params[:id])
+        rescue ActiveRecord::RecordNotFound => e
+          tournament = nil
+        end
+      end
+
        def destroy
          @tournament = Tournament.find(params[:id])
          if @tournament.destroy

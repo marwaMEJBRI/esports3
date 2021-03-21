@@ -1,6 +1,6 @@
 
 <p id="notice"><%= notice %></p>
-<h1 class="font-semibold text-4xl text-gray-700 my-8"> Match Name: &nbsp; <%= @match.name %> </h1>
+<h1 class="font-semibold text-4xl text-gray-700 my-8"> Match Name: &nbsp; <%= @match.name if @match %> </h1>
 <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
   <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
     <table class="items-center w-full bg-transparent border-collapse">
@@ -17,11 +17,11 @@
       </thead>
       <tbody>
           <tr>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.name %></td>
-           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%=  @match.result %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.brodcast_link %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.start_date %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.end_date %></td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.name if @match %></td>
+           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%=  @match.result if @match%></td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.brodcast_link if @match%></td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.start_date if @match%></td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.end_date if @match%></td>
 
           </tr>
       </tbody>
