@@ -1,8 +1,8 @@
-<%if  current_user && current_user.has_role?(:player)%>
-<h2 class="text-3xl font-semibold text-gray-800 md:text-4xl">Welcome Player <span class="text-indigo-600"><%=current_user.email%></span></h2>        
-<%= debug(params)%>
-<%elsif current_user && current_user.has_role?(:admin)%>
-<h2 class="text-3xl font-semibold text-gray-800 md:text-4xl">Admin <span class="text-indigo-600"><%=current_user.email%></span></h2>        
+<%if current_user && current_user.has_role?(:admin)%>
+<h2 class="text-3xl font-semibold text-gray-800 md:text-4xl">Welcome Admin <span class="text-indigo-600"><%=current_user.email%></span></h2>        
+<% debug(params)%>
+<%else current_user && current_user.has_role?(:player)%>   
+<h2 class="text-3xl font-semibold text-gray-800 md:text-4xl">Welcome player <span class="text-indigo-600"><%=current_user.email%></span></h2>        
 <%end%>
 <div class="w-full">
     <nav class="bg-white shadow-lg">
