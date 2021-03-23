@@ -43,7 +43,7 @@ class MatchesController < ApplicationController
       
       
       def edit   
-        @match = Match.find(params[:id])   
+        @match =Match.find(params[:id])   
       end   
       def update
         @match = Match.find(params[:id])

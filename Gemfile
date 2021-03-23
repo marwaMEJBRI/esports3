@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'simple_form'
-
+gem 'byebug'
 gem "rolify"
 
 #group :development, :test do

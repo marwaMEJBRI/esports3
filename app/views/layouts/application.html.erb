@@ -16,7 +16,8 @@
     <div id=<%= message_type %> class="alert"><%= message %></div>
   <% end %>
  <%= render 'shared/navbar' %>
- <%= render 'shared/message' %>
     <%= yield %>
+    <%= render 'shared/footer' %>
+    <% debug (params) if Rails.env.developement?%>
   </body>
 </html>
