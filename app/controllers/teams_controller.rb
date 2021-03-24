@@ -1,10 +1,12 @@
 class TeamsController < ApplicationController
       #  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
+       include TeamMaker 
        before_action :authenticate_user!, except: [:index, :show]
     def index
           @teams = Team.all
     end
       def create
+        
           @team = Team.new(params[:id])
          #respond_to do |format|
            if @team.save
