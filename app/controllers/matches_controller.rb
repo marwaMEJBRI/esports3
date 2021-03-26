@@ -1,11 +1,13 @@
 class MatchesController < ApplicationController
-    # before_action :authenticate_user!, except: [:index, :show]
-     
+     before_action :authenticate_user!, except: [:index, :show]
+   
     def match_params   
       params.require(:match).permit(:name, :result, :broadcast_link, :start_date, :end_date)   
     end   
+    
     def index
           @matches = Match.all
+         
     end
     def create
         @match = Match.new(params[:id])

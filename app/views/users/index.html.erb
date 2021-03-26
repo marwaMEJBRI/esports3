@@ -16,7 +16,7 @@
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= user.email %></td>
              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= link_to 'Show', users_path %></td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= link_to 'Edit', edit_user_registration_path(user) %></td>
-
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= link_to 'Destroy', users_path(:id => user.id), :method => :delete%></td>
           </tr>
         <% end %>
       </tbody>
@@ -24,3 +24,4 @@
   </div>
 </div>
 <%= link_to 'New user', users_path %>
+
