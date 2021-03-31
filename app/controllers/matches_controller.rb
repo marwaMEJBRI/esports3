@@ -1,13 +1,10 @@
 class MatchesController < ApplicationController
      before_action :authenticate_user!, except: [:index, :show]
-   
     def match_params   
       params.require(:match).permit(:name, :result, :broadcast_link, :start_date, :end_date)   
     end   
-    
     def index
           @matches = Match.all
-         
     end
     def create
         @match = Match.new(params[:id])
@@ -19,12 +16,9 @@ class MatchesController < ApplicationController
             render :new
           end
     end
-      
       def new
           @match = Match.new
       end
-        
-      
       def show
         begin
           @match = Match.find(params[:id])
@@ -41,9 +35,6 @@ class MatchesController < ApplicationController
            flash[:error] = 'Something went wrong'
          end 
       end
-
-      
-      
       def edit   
         @match =Match.find(params[:id])   
       end   

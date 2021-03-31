@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  #before_action :set_search
+
   def index
-    @users=User.all
+    @users = User.all
   end
 
   def show

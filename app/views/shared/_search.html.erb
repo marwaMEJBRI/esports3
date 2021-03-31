@@ -1,0 +1,8 @@
+
+
+
+  <%= search_form_for @q do |f| %>
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :id=>"username",:type=>"text", :placeholder=>"Username" %>
+    <div class="actions"><%= f.submit "boutton" %></div>
+<% end %>
