@@ -23,6 +23,7 @@ gem 'simple_form'
 gem 'byebug'
 gem "rolify"
 gem 'ransack'
+gem 'faker'
 
 
 #group :development, :test do

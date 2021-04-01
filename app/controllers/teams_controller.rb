@@ -1,9 +1,13 @@
 class TeamsController < ApplicationController
       #  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
-       before_action :authenticate_user!, except: [:index, :show]
-    def index
+
+       def team_params   
+        params.require(:team).permit(:name)   
+      end
+
+       def index
           @teams = Team.all
-    end
+       end
       def create
           @team = Team.new(params[:id])
          #respond_to do |format|
@@ -26,13 +30,21 @@ class TeamsController < ApplicationController
         
        end
        def show
-         @team = Team.find(params[:id])
+        begin
+          @team = Team.find(params[:id])
+        rescue ActiveRecord::RecordNotFound => e
+          team = nil
+        end
       end
       def new
         @team = Team.new
      end
      def show
-      @team = Team.find(params[:id])
+      begin
+        @team = Team.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        team = nil
+      end
     end
       def destroy
         @team = Team.find(params[:id])

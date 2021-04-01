@@ -3,10 +3,9 @@ class TournamentsController < ApplicationController
     def index
            @tournaments = Tournament.all
     end
+    
       def create
-
          @tournament = Tournament.new(params[:id])
-        
          respond_to do |format|
            if @tournament.save
              flash[:notice] = 'tournament was successfully created.'
@@ -17,6 +16,7 @@ class TournamentsController < ApplicationController
              format.xml { render xml: @tournament.errors, status: :unprocessable_entity }
            end
          end
+
          def new
            @tournament = Tournament.new
          end
