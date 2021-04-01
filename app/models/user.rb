@@ -6,6 +6,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   after_create :assign_default_role 
+  has_many :players
+ has_many :likes
+ has_many :liked_teams,through: :likes, source: :product
 
   def assign_default_role
     self.add_role(:player) if self.roles.blank?

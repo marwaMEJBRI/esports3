@@ -1,10 +1,11 @@
 class TournamentsController < ApplicationController
     #  before_action :authenticate_user!, except: [:index, :show]
-    before_action :random_team , only: [:create]
+   # before_action :random_team , only: [:create]
+   before_action :random, only: [:create]
     def index
            @tournaments = Tournament.all
     end
-      def create
+      def create3 
         
          @tournament = Tournament.new(params[:id])
         

@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_120609) do
+ActiveRecord::Schema.define(version: 2021_03_31_145306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "matches", force: :cascade do |t|
     t.string "name"
@@ -24,6 +31,14 @@ ActiveRecord::Schema.define(version: 2021_03_17_120609) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tournament_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string "player_name"
+    t.string "email"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relations", force: :cascade do |t|
@@ -43,6 +58,18 @@ ActiveRecord::Schema.define(version: 2021_03_17_120609) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
+  create_table "rounds", force: :cascade do |t|
+    t.integer "scoreround"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "scoreteam"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "team_and_tournament_linkeds", force: :cascade do |t|
     t.integer "team_id"
     t.integer "tournament_id"
@@ -54,7 +81,6 @@ ActiveRecord::Schema.define(version: 2021_03_17_120609) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tournament_id"
   end
 
   create_table "tournaments", force: :cascade do |t|

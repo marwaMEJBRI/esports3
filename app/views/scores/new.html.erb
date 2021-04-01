@@ -1,0 +1,15 @@
+<h1>New score</h1>
+
+<%= form_with model: @score do |form| %>
+  <div>
+    <%= form.label :scorescore %><br>
+    <%= form.number_field :scorescore %>
+  </div>
+
+  
+<div>   
+        <%= link_to 'Back', { controller: 'scores', action: 'index'} %>   
+         <%= form.submit %>
+      </div> 
+ 
+<% end %>
