@@ -1,0 +1,15 @@
+<h1>New round</h1>
+
+<%= form_with model: @round do |form| %>
+  <div>
+    <%= form.label :scoreround %><br>
+    <%= form.number_field :scoreround %>
+  </div>
+
+  
+<div>   
+        <%= link_to 'Back', { controller: 'rounds', action: 'index'} %>   
+         <%= form.submit %>
+      </div> 
+ 
+<% end %>
