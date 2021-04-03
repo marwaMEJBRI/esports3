@@ -14,3 +14,6 @@ class Tournament < ApplicationRecord
       end
     
 end
+
+#mot de passe marwa 
+# RIwa ME 548 @@@

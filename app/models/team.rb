@@ -4,6 +4,9 @@ class Team < ApplicationRecord
     has_many :tournaments, through: :TeamAndTournamentLinked
     has_many :likes
     belongs_to :rounds
+    has_many :players
+    
+
 
 end
 

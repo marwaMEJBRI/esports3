@@ -3,7 +3,8 @@ class Match < ApplicationRecord
  has_many :relation
  has_many :team, through: :relation, source: :team 
  belongs_to :tournament
-has_many :rounds
+has_many :Roundmatch
+has_many :rounds,through: :Roundmatch
  
- def 
+  
 end
