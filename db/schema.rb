@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_213802) do
+ActiveRecord::Schema.define(version: 2021_04_09_234616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2021_03_23_213802) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "matches", force: :cascade do |t|
     t.string "name"
     t.string "result"
@@ -33,7 +40,37 @@ ActiveRecord::Schema.define(version: 2021_03_23_213802) do
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "round_id"
     t.integer "tournament_id"
+    t.integer "relation_id"
+  end
+
+  create_table "matchresults", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "scores"
+    t.integer "team_id"
+    t.integer "match_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string "player_name"
+    t.string "email"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relations", force: :cascade do |t|
@@ -53,6 +90,48 @@ ActiveRecord::Schema.define(version: 2021_03_23_213802) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
+  create_table "roundmatches", force: :cascade do |t|
+    t.integer "round_id"
+    t.integer "match_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "match_id"
+    t.integer "team_id"
+    t.integer "number"
+    t.string "status"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "scoreteam"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "round_id"
+    t.integer "score1"
+    t.integer "score2"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.integer "number"
+  end
+
+  create_table "team1s", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "team2s", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "team_and_tournament_linkeds", force: :cascade do |t|
     t.integer "team_id"
     t.integer "tournament_id"
@@ -64,7 +143,10 @@ ActiveRecord::Schema.define(version: 2021_03_23_213802) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tournament_id"
+    t.integer "round_id"
+    t.string "team1"
+    t.string "team2"
+    t.integer "scores"
   end
 
   create_table "tournaments", force: :cascade do |t|

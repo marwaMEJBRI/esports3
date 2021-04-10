@@ -24,6 +24,7 @@ gem 'byebug'
 gem "rolify"
 gem 'ransack'
 gem 'faker'
+gem 'noticed', '~> 1.3', '>= 1.3.2'
 
 
 #group :development, :test do
