@@ -1,0 +1,15 @@
+  <div class="field">
+    <%= f.label :player_name %><br>
+    <%= f.text_field :player_name %>
+      <%= f.label :email%><br>
+    <%= f.text_field :email %>
+     <%= f.label :description%><br>
+    <%= f.text_field :description %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<%= link_to 'Show', @player %> 
+<%= link_to 'Back', player_path %>

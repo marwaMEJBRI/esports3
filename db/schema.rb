@@ -40,18 +40,12 @@ ActiveRecord::Schema.define(version: 2021_04_09_234616) do
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "round_id"
+  
     t.integer "tournament_id"
     t.integer "relation_id"
   end
 
-  create_table "matchresults", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "scores"
-    t.integer "team_id"
-    t.integer "match_id"
-  end
+  
 
   create_table "notifications", force: :cascade do |t|
     t.string "recipient_type", null: false
@@ -90,63 +84,17 @@ ActiveRecord::Schema.define(version: 2021_04_09_234616) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
-  create_table "roundmatches", force: :cascade do |t|
-    t.integer "round_id"
-    t.integer "match_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
-  create_table "rounds", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "match_id"
-    t.integer "team_id"
-    t.integer "number"
-    t.string "status"
-  end
 
-  create_table "scores", force: :cascade do |t|
-    t.integer "scoreteam"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "round_id"
-    t.integer "score1"
-    t.integer "score2"
-  end
 
-  create_table "seasons", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.integer "number"
-  end
 
-  create_table "team1s", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
-  create_table "team2s", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "team_and_tournament_linkeds", force: :cascade do |t|
-    t.integer "team_id"
-    t.integer "tournament_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "round_id"
-    t.string "team1"
-    t.string "team2"
-    t.integer "scores"
+
   end
 
   create_table "tournaments", force: :cascade do |t|
