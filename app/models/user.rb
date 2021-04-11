@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :players,through: :likes
   has_many :likes
 
+
   def assign_default_role
     self.add_role(:player) if self.roles.blank?
   end 
