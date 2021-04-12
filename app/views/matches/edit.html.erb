@@ -1,33 +1,38 @@
-<h1>Edit matches page</h1>
 
-<%= form_for(@match) do |f| %>
-  <% if @match.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
-
-      <ul>
-      <% @match.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
-    <%= f.label :Name %>
-     <%=f.text_field :name%><br>
-    <%= f.label :result %><
-     <%=f.text_field :result%><br>
-    <%= f.label :brodcast_link %>
-     <%=f.text_field :brodcast_link%><br>
-    <%= f.label :start_date %>
-     <%=f.text_field :start_date%><br>
-    <%= f.label :end_date %>
-     <%=f.text_field :end_date%>
+    <%= simple_form_for @match  do |f| %>  
+  <div>
+    <label>Name</label>   
+      <%= f.text_field :name %>   
+  </div>   
+  
+    <div>   
+      <label>Result</label>   
+       <%= f.text_field :result %>   
+    </div>   
+        <div>   
+        <label>Brodcast Link</label>   
+        <%= f.text_field :brodcast_link %>   
+       </div>
+       <div>   
+       <label>start date</label>   
+       <%= f.datetime_field :start_date%>   
+        </div>
+        <div>   
+        <label> End date</label>   
+        <%= f.datetime_field :end_date %>   
+        </div>
+        
+        <div>   
+        <label> Tournament_id</label>   
+        <%= f.text_field :tournament_id %>   
+        </div>
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'update' , { controller: 'matches', action: 'edit'} %>
   </div>
-<% end %>
+       <%end%>   
+
 <%= link_to 'Back', match_path %>

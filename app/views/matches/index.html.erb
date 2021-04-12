@@ -1,68 +1,34 @@
 
-<!--<p id="notice"><%= notice %></p>
-<h1 class="font-semibold text-4xl text-gray-700 my-8">Matches</h1>
-<div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-    <table class="items-center w-full bg-transparent border-collapse">
-      <thead>
-        <tr>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Name</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Result</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Brodcast Link</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Start Date</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">End Date</th>
-
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left", colspan="3"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @matches.each do |match| %>
-          <tr>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= match.name %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= match.result %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= match.brodcast_link %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= match.start_date %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= match.end_date %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= link_to 'Show', match %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= link_to 'Edit', edit_match_path(match) %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= link_to 'Destroy', match_path(:id => match.id), :method => :delete%></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>-->
-
-<!-- component -->
 <p id="notice"><%= notice %></p>
-<h1 class="font-semibold text-4xl text-gray-700 my-8">Matches</h1>
-<div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+<h1 class="my-8 text-4xl font-semibold text-gray-700">Matches</h1>
+<div class="w-full px-4 mb-12 xl:w-8/12 xl:mb-0">
+<div class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-white rounded shadow-lg">
   
 
-	<table class="text-left w-full">
-		<thead class="bg-gray-800 flex text-white w-full">
+	<table >
+		<thead >
 			<tr class="flex w-full mb-4">
-				<th class="p-4 w-1/4">Name</th>
-				<th class="p-4 w-1/4">Result</th>
-				<th class="p-4 w-1/4">Brodcast Link</th>
-				<th class="p-4 w-1/4">Start Date</th>
-        <th class="p-4 w-1/4">End Date</th>
+				<th class="w-1/4 p-4">Name</th>
+        <th class="w-1/4 p-4">tournament_id</th>
+				<th class="w-1/4 p-4">Result</th>
+				<th class="w-1/4 p-4">Brodcast Link</th>
+				<th class="w-1/4 p-4">Start Date</th>
+        <th class="w-1/4 p-4">End Date</th>
 
 			</tr>
 		</thead>
-    <tbody class="bg-grey-light flex flex-col items-center overflow-y-scroll w-full" style="height: 50vh;">
+    <tbody>
     <% @matches.each do |match| %>
       <tr class="flex w-full mb-4">
-        <td class="w-1/3 text-left py-3 px-4"><%= match.name %></td>
-        <td class="w-1/3 text-left py-3 px-4"><%= match.result %></td>
-        <td class="text-left py-3 px-4"><a class="hover:text-blue-500"><%= match.brodcast_link %></a></td>
-        <td class="text-left py-3 px-4"><a class="hover:text-blue-500"><%= match.start_date %></a></td>
-        <td class="text-left py-3 px-4"><a class="hover:text-blue-500"><%= match.end_date %></a></td>
-        <td class="text-left py-3 px-4"><a class="hover:text-blue-500"><%= match.end_date %></a></td>
-        <td class="text-left py-3 px-4"><a class="hover:text-blue-500"><%= link_to 'Show', match %></a></td>
-        <td class="text-left py-3 px-4"><a class="hover:text-blue-500"><%= link_to 'Edit', edit_match_path(match) %></a></td>
-        <td class="text-left py-3 px-4"><a class="hover:text-blue-500"><%= link_to 'Destroy', match_path(:id => match.id), :method => :delete%></a></td>
+        <td class="w-1/3 px-4 py-3 text-left"><%= match.name %></td>
+        <td class="w-1/3 px-4 py-3 text-left"><%= match.tournament_id %></td>
+        <td class="w-1/3 px-4 py-3 text-left"><%= match.result %></td>
+        <td class="px-4 py-3 text-left"><%= match.brodcast_link %></a></td>
+        <td class="px-4 py-3 text-left"><%= match.start_date %></a></td>
+        <td class="px-4 py-3 text-left"><%= match.end_date %></a></td>
+        <td class="px-4 py-3 text-left"><%= link_to 'Show', matches_path %></a></td>
+        <td class="px-4 py-3 text-left"><a class="hover:text-blue-500"><%= link_to 'Edit', edit_match_path(match) %></a></td>
+        <td class="px-4 py-3 text-left"><a class="hover:text-blue-500"><%= link_to 'Destroy', match_path(:id => match.id), :method => :delete%></a></td>
       </tr>
       <% end %>
     </tbody>

@@ -1,29 +1,23 @@
 class TeamsController < ApplicationController
-      #  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
 
        def team_params   
-        params.require(:team).permit(:name)   
+        params.require(:team).permit(:name, :tournament_id)   
       end
 
        def index
           @teams = Team.all
        end
-      def create
-          @team = Team.new(params[:id])
-         #respond_to do |format|
-           if @team.save
-              # flash[:notice] = 'team was successfully created.'
-              # format.html { redirect_to(@team) }
-              # format.xml { render xml: @team, status: :created, location: @team }
+       def create
+        @team =Team.new(team_params)    
+               if @team.save
               flash[:notice] = "Successfully created team!"
               redirect_to teams_path(@team)
             else
-              # format.html { render action: "new" }
-              # format.xml { render xml: @team.errors, status: :unprocessable_entity }
               flash[:notice] = "Error creating new team!"
               render :new
             end
-         end
+      end
+    
          def new
            @team = Team.new
          end
@@ -72,5 +66,6 @@ class TeamsController < ApplicationController
             render 'edit'
           end
       end
+    
       
 

@@ -51,7 +51,7 @@ new match
         </div>   
         <div>   
         <label>Brodcast Link</label>   
-        <%= f.text_field :Brodcast_Link %>   
+        <%= f.text_field :brodcast_link %>   
        </div>
        <div>   
        <label>start date</label>   
@@ -85,7 +85,7 @@ show match
 
 <p>
   <strong>Brodcast Link:</strong>
-  <%= @match.broadcast_link %>
+  <%= @match.brodcast_link %>
 </p>
 
 <p>

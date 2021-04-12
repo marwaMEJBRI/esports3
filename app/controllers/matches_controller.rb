@@ -1,14 +1,13 @@
 class MatchesController < ApplicationController
-     before_action :authenticate_user!, except: [:index, :show]
     def match_params   
-      params.require(:match).permit(:name, :result, :broadcast_link, :start_date, :end_date)   
+      params.require(:match).permit(:name, :result, :brodcast_link, :start_date, :end_date, :tournament_id)   
     end   
     def index
           @matches = Match.all
     end
     def create
-        @match = Match.new(params[:id])
-          if @match.save
+      @match =Match.new(match_params)    
+             if @match.save
             flash[:notice] = "Successfully created match!"
             redirect_to matches_path(@match)
           else
@@ -26,26 +25,28 @@ class MatchesController < ApplicationController
           match = nil
         end
       end
+     
       def destroy
-         @match = Match.find(params[:id])
-         if @match.destroy
-           flash[:success] = 'match was successfully deleted.'
-           redirect_to matches_url
-         else
-           flash[:error] = 'Something went wrong'
-         end 
+        @match = Match.find(params[:id])
+        @match.destroy
+    
+        redirect_to matches_path
       end
       def edit   
         @match =Match.find(params[:id])   
-      end   
+      end  
       def update
-        @match = Match.find(params[:id])
-        if @match.update_attribute(match_params)
+        respond_to do |format|
+          @match = Match.find(params[:id])
+          if @match.update(match_params)
+            format.html { redirect_to @match, notice: 'match was successfully updated.' }
           else
-            render 'edit'
-          end
+            format.html { render :edit }
+             end
         end
- end
-    
-    
+       
   
+ end
+end   
+    
+

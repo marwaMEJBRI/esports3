@@ -1,20 +1,23 @@
 
-
 <p id="notice"><%= notice %></p>
-<h1 class="font-semibold text-4xl text-gray-700 my-8"> Team Name: &nbsp;<%= @team.name if @team %> </h1>
-<div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+<h1 class="my-8 text-4xl font-semibold text-gray-700"> Team Name:  <%= @team.name if @team %> </h1>
+
+<%= @team.name if @team %></h1>
+<div class="w-full px-4 mb-12 xl:w-8/12 xl:mb-0">
+  <div class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-white rounded shadow-lg">
     <table class="items-center w-full bg-transparent border-collapse">
       <thead>
         <tr>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Name</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left", colspan="3"></th>
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">Name</th>
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">tournament_id</th>
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid", colspan="2"></th>
         </tr>
       </thead>
       <tbody>
           <tr>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @team.name if @team%></td>
-          </tr>
+            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @team.name if @team %></td>
+            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @team.tournament_id if @team %></td>
+            </tr>
       </tbody>
     </table>
   </div>
