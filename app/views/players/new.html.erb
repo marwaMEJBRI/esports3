@@ -1,13 +1,13 @@
-<h1>New player</h1>
 
+<div class="container"> 
 <%= form_with model: @player do |form| %>
   <div>
-    <%= form.label :player_name %><br>
-    <%= form.text_field :player_name %>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :email %><shebr>
+    <%= form.label :email %><br>
     <%= form.text_area :email %>
   </div>
     <div>
@@ -15,12 +15,12 @@
     <%= form.text_area :description %>
   </div>
 <div>   
-        <%#= link_to 'Back', { controller: 'players', action: 'index'} %>   
+        
       
       <div> 
-         <%#= link_to 'save', { controller: 'players', action: 'index'} %>   
-         <%= form.submit %>
-
+        <%= link_to 'Back', { controller: 'players', action: 'index'} %>   
+        <%= form.submit 'Create player' ,{ controller: 'players', action: 'create'} %>
          </div>
  
 <% end %>
+</div>

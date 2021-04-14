@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   after_create :assign_default_role 
   has_many :notifications, as: :recipient
-  has_many :players,through: :likes
-  has_many :likes
+  
+  has_many :players
 
 
   def assign_default_role
