@@ -1,8 +1,6 @@
 class TeamsController < ApplicationController
 
-       def team_params   
-        params.require(:team).permit(:name, :tournament_id, :player_id)   
-      end
+      
 
        def index
           @teams = Team.all
@@ -50,9 +48,7 @@ class TeamsController < ApplicationController
           redirect_to teams_url
         end
       end
-      def team_params   
-        params.require(:team).permit(:name)   
-      end   
+    
       def edit   
         @team = Team.find(params[:id])   
       end   
@@ -64,6 +60,11 @@ class TeamsController < ApplicationController
           else
             flash[:error] = "Something went wrong"
             render 'edit'
+          end
+          
+          private 
+          def team_params   
+            params.require(:team).permit(:name, :tournament_id, :player_id)   
           end
       end
     
