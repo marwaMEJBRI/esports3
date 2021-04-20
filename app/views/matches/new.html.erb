@@ -2,10 +2,10 @@
 
 <div class="container">   
   <%= simple_form_for @match  do |f| %>   
-      <div>   
+      <%# <div>    %>
         <%# <p>   
           <%= "<div>#{@match.errors.full_messages.first}</div>".html_safe if @match.errors.any? %> 
-    <% if @match.errors.any? %>
+  <!--  <% if @match.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= "#{pluralize(@match.errors.count, "error")} prohibited this match from being saved:" %>
@@ -18,7 +18,7 @@
           <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %>-->
       <div>   
             <label>Name</label>   
               <%= f.text_field :name %>   
@@ -40,11 +40,14 @@
         <label> End date</label>   
         <%= f.datetime_field :end_date %>   
         </div>
-         </p>   
-      </div>   
+        <div>   
+        <label> Tournament_id</label>   
+        <%= f.text_field :tournament_id %>   
+        </div>
+   
       <div>   
         <%= link_to 'Back', { controller: 'matches', action: 'index'} %>   
-        <%= f.submit 'Create match' %>   
+        <%= f.submit 'Create match' ,{ controller: 'matches', action: 'create'} %>   
       </div>   
   <% end %> 
 </div>  

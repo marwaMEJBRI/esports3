@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_234616) do
+ActiveRecord::Schema.define(version: 2021_04_12_195823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_234616) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "team_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "matches", force: :cascade do |t|
     t.string "name"
     t.string "result"
@@ -40,12 +33,8 @@ ActiveRecord::Schema.define(version: 2021_04_09_234616) do
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  
     t.integer "tournament_id"
-    t.integer "relation_id"
   end
-
-  
 
   create_table "notifications", force: :cascade do |t|
     t.string "recipient_type", null: false
@@ -60,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_234616) do
   end
 
   create_table "players", force: :cascade do |t|
-    t.string "player_name"
+    t.string "name"
     t.string "email"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -84,17 +73,11 @@ ActiveRecord::Schema.define(version: 2021_04_09_234616) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
-
-
-
-
-
-
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-
+    t.integer "tournament_id"
   end
 
   create_table "tournaments", force: :cascade do |t|

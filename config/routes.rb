@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :teams
   resources :matches
   resources :tournaments
- 
+  get "match/:id", to: "matches#show", as: "show_match"
+
 end

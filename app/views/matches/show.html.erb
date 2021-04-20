@@ -1,27 +1,31 @@
 
 <p id="notice"><%= notice %></p>
-<h1 class="font-semibold text-4xl text-gray-700 my-8"> Match Name: &nbsp; <%= @match.name if @match %> </h1>
-<div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+<h1 class="my-8 text-4xl font-semibold text-gray-700"> Match Name: &nbsp; <%= @match.name if @match %> </h1>
+<div class="w-full px-4 mb-12 xl:w-8/12 xl:mb-0">
+  <div class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-white rounded shadow-lg">
     <table class="items-center w-full bg-transparent border-collapse">
       <thead>
         <tr>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Name</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Result</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Brodcast Link</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Start date</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">End date</th>
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">Name</th>
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">tournament_id</th>
 
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left", colspan="3"></th>
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">Result</th>
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">Brodcast Link</th>
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">Start date</th>
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">End date</th>
+
+          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid", colspan="4"></th>
         </tr>
       </thead>
       <tbody>
           <tr>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.name if @match %></td>
-           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%=  @match.result if @match%></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.brodcast_link if @match%></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.start_date if @match%></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @match.end_date if @match%></td>
+            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.name if @match %></td>
+                        <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.tournament_id if @match %></td>
+
+           <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%=  @match.result if @match%></td>
+            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.brodcast_link if @match%></td>
+            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.start_date if @match%></td>
+            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.end_date if @match%></td>
 
           </tr>
       </tbody>

@@ -1,24 +1,24 @@
 
-<header class="border-b md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4">
+<header class="p-4 pb-0 border-b shadow-lg md:flex md:items-center md:justify-between md:pb-4">
   <!-- Logo text or image -->
   <div class="flex items-center justify-between mb-4 md:mb-0">
-    <h1 class="text-white text-2xl mx-2 font-semibold" style= "color: #114" >
+    <h1 class="mx-2 text-2xl font-semibold text-white" style= "color: #114" >
      <%= link_to "E-sports Community ", root_path%>
     </h1>
   </div>
   <!-- END Logo text or image -->
   
   <!-- Search field
-  <form class="mb-4 w-full md:mb-0 md:w-1/4">
+  <form class="w-full mb-4 md:mb-0 md:w-1/4">
     <label class="hidden" for="search-form">Search</label>
-    <input class="bg-grey-lightest border-2 focus:border-orange p-2 rounded-lg shadow-inner w-full" placeholder="Search" type="text">
+    <input class="w-full p-2 border-2 rounded-lg shadow-inner bg-grey-lightest focus:border-orange" placeholder="Search" type="text">
     <button class="hidden">Submit</button>
   </form> -->
   <!-- END Search field -->
   
   <!-- Global navigation -->
   <nav>
-    <ul class="list-reset md:flex md:items-center text-white" style= "color: #114" >
+    <ul class="text-white list-reset md:flex md:items-center" style= "color: #114" >
     <% if !(user_signed_in?) %>
         <li class="md:ml-4">
         <%= link_to "Login", new_user_session_path %>
@@ -42,6 +42,20 @@
       <li class="md:ml-4">
          <%= link_to "Tournaments", tournaments_path %>
       </li>
+      <%elsif  current_user && current_user.has_role?(:organisateur)%>   
+     <li class="md:ml-4">
+        <%= button_to "Log out", destroy_user_session_path,method: :delete %>
+      </li>
+      <li class="md:ml-4">
+        <%= link_to "Matches", matches_path %>
+      </li>
+      <li class="md:ml-4">
+         <%= link_to "Teams", teams_path %>
+      </li>
+      <li class="md:ml-4">
+         <%= link_to "Tournaments", tournaments_path %>
+      </li>
+
 <%elsif  current_user && current_user.has_role?(:player)%>
       <li class="md:ml-4">
         <%= button_to "Log out", destroy_user_session_path,method: :delete%>
