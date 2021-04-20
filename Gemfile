@@ -24,7 +24,7 @@ gem 'byebug'
 gem "rolify"
 gem 'ransack'
 gem 'faker'
-gem 'noticed', '~> 1.3', '>= 1.3.2'
+#gem 'noticed', '~> 1.3', '>= 1.3.2'
 gem "rails_admin"
 
 #group :development, :test do

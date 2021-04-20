@@ -1,7 +1,5 @@
 class MatchesController < ApplicationController
-    def match_params   
-      params.require(:match).permit(:name, :result, :brodcast_link, :start_date, :end_date, :tournament_id)   
-    end   
+     
     def index
           @matches = Match.all
     end
@@ -47,6 +45,10 @@ class MatchesController < ApplicationController
        
   
  end
+ private
+ def match_params   
+  params.require(:match).permit(:name, :result, :brodcast_link, :start_date, :end_date, :tournament_id)   
+end
 end   
     
 

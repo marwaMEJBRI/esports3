@@ -1,8 +1,6 @@
 class PlayersController < ApplicationController
   
-  def player_params   
-    params.require(:player).permit(:name, :email, :description)    
-  end   
+  
 
   def index
          @players = Player.all
@@ -58,5 +56,9 @@ def create
            end
       end
     end
+    private
+    def player_params   
+      params.require(:player).permit(:name, :email, :description)    
+    end 
   end
 

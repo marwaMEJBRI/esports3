@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_222848) do
+ActiveRecord::Schema.define(version: 2021_04_19_225725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_222848) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.bigint "team_id"
   end
 
   create_table "relations", force: :cascade do |t|
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_222848) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tournament_id"
     t.integer "player_id"
+    t.bigint "match_id"
   end
 
   create_table "tournaments", force: :cascade do |t|
@@ -88,40 +90,11 @@ ActiveRecord::Schema.define(version: 2021_04_13_222848) do
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "match_id"
+    t.bigint "team_id"
+    t.index ["match_id"], name: "index_tournaments_on_match_id"
+    t.index ["team_id"], name: "index_tournaments_on_team_id"
   end
-  create_table "tournaments", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer "status"
-    t.boolean "active"
-    t.integer "slots"
-    t.integer "user_id"
-    t.integer "season_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "game_id", null: false
-    t.integer "prize"
-    t.integer "entry_fee"
-    t.string "slug"
-    t.bigint "mode_id"
-    t.bigint "region_id"
-    t.text "rules"
-    t.datetime "planned_at"
-    t.decimal "round_delay"
-    t.bigint "server_id"
-    t.bigint "stage_id"
-    t.index ["game_id"], name: "index_tournaments_on_game_id"
-    t.index ["mode_id"], name: "index_tournaments_on_modes_id"
-    t.index ["region_id"], name: "index_tournaments_on_regions_id"
-    t.index ["season_id"], name: "index_tournaments_on_season_id"
-    t.index ["server_id"], name: "index_tournaments_on_server_id"
-    t.index ["slug"], name: "index_tournaments_on_slug", unique: true
-    t.index ["stage_id"], name: "index_tournaments_on_stage_id"
-    t.index ["user_id"], name: "index_tournaments_on_user_id"
-  end
-
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -145,4 +118,8 @@ ActiveRecord::Schema.define(version: 2021_04_13_222848) do
 
   add_foreign_key "comments", "matches"
   add_foreign_key "comments", "users"
+  add_foreign_key "players", "teams"
+  add_foreign_key "teams", "matches"
+  add_foreign_key "tournaments", "matches"
+  add_foreign_key "tournaments", "teams"
 end
