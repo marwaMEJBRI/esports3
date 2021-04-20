@@ -1,4 +1,4 @@
-touclass Tournament < ApplicationRecord
+class Tournament < ApplicationRecord
     validates :name, presence: true
     has_many :matches
     has_many :teams
@@ -56,3 +56,4 @@ touclass Tournament < ApplicationRecord
       end
 
 end
+
