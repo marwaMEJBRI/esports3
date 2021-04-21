@@ -6,8 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   after_create :assign_default_role 
-  has_many :notifications, as: :recipient
-  
+
   has_many :players
 
 
