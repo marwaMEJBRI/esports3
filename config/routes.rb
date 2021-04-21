@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :matches
   resources :tournaments
   resources :players
-
+ # admin routes
+ mount RailsAdmin::Engine => "/admin", as: "rails_admin"
 end

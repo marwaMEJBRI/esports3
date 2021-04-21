@@ -3,6 +3,10 @@ class TournamentsController < ApplicationController
            @tournaments = Tournament.all
     end
     
+    def random(teams)
+    end    
+
+
   def create
     @tournament =Tournament.new(tournament_params)      
        respond_to do |format|
