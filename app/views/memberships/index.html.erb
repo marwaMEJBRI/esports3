@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<!-- component -->
+<div class="w-2/3 mx-auto">
+  <div class="my-6 bg-white rounded shadow-md">
+    <table class="w-full text-left border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+      <thead>
+        <tr>
+          <th class="px-6 py-4 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-dark border-grey-light">user_id</th>
+                    <th class="px-6 py-4 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-dark border-grey-light">team_id</th>
+
+          <th class="px-6 py-4 text-sm font-bold uppercase border-b bg-grey-lightest text-grey-dark border-grey-light">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hover:bg-grey-lighter">
+        
+          <td class="px-6 py-4 border-b border-grey-light">
+            <a href="#" class="px-3 py-1 text-xs font-bold rounded text-grey-lighter bg-green hover:bg-green-dark">Edit</a>
+            <a href="#" class="px-3 py-1 text-xs font-bold rounded text-grey-lighter bg-blue hover:bg-blue-dark">View</a>
+          </td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= link_to 'New membership', new_membership_path %><br>
