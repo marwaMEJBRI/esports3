@@ -3,8 +3,8 @@ class TournamentsController < ApplicationController
            @tournaments = Tournament.all
     end
     
-    def random(teams)
-    end    
+   # def random(teams)
+    #end    
 
 
   def create
@@ -35,7 +35,7 @@ class TournamentsController < ApplicationController
          @tournament = Tournament.find(params[:id])
          if @tournament.destroy
            flash[:success] = 'tournament was successfully deleted.'
-           redirect_to tournaments_url
+           
          else
            flash[:error] = 'Something went wrong'
            redirect_to tournaments_url
