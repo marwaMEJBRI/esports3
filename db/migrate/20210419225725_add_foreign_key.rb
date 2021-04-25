@@ -6,7 +6,8 @@ class AddForeignKey < ActiveRecord::Migration[6.1]
     add_foreign_key(:tournaments, :teams)
     add_foreign_key(:teams, :matches)
     add_foreign_key(:tournaments, :matches)
-   
+    add_foreign_key(:Joinrequests, :teams)
+    add_foreign_key(:joinrequests, :users   
 
 
 
