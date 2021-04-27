@@ -21,11 +21,11 @@ gem 'devise'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'simple_form'
 gem 'byebug'
-gem "rolify"
+gem 'rolify'
 gem 'ransack'
 gem 'faker'
 #gem 'noticed', '~> 1.3', '>= 1.3.2'
-gem "rails_admin"
+gem 'rails_admin'
 
 #group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

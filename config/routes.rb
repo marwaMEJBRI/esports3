@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :players
  # admin routes
  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
+ #document routes
+ get 'home/document' => 'home#document'
+ get 'home/contact' => 'home#contact'
 end
