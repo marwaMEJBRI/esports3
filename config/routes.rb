@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :matches
   resources :tournaments
   resources :players
+  resources :memberships
+  resources :joinrequests
+  
  # admin routes
  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
  #document routes
