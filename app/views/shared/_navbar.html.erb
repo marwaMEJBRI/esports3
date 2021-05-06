@@ -28,14 +28,14 @@ ul li {
     color : white;
     font-size : 18px;
    	display: inline-block;
-    margin-left: 75px;
+    margin-left: 50px;
     font-weight: 500;
     padding: 10px 5px;
 }
 ul li:hover{
     color : rgb(255,179,32);
 }
-.navigation a{
+.navigation .alogin{
     font-size : 17px;
     text-decoration : none;
     color : black;
@@ -54,41 +54,8 @@ ul li:hover{
 hr{
     border : 0.5px solid rgb(255,179,32);
 }
-.section{
-    background-image: url("https://images.unsplash.com/photo-1531594835867-65b60cc9e4ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80");
-    background-repeat : no-repeat;
-    background-size : cover;
-    width : auto;
-    height : 800px;
-}
-.section{
-    color : white;
-    font-size : 35px;
-}
-.texte{
-   padding-top : 25%;
-   padding-left : 5%;
-}
-.section span{
-    color : rgb(255,179,32);
-    padding-left : 10%;
-}
-.section a{
-    text-decoration : none;
-    font-size : 13px;
-    font-weight : bold;
-    color : black;
-    background-color : rgb(255,179,32);
-    border : 1px solid rgb(255,179,32);
-    border-radius : 50px;
-    width : 170px;
-    text-align : center;
-    margin-left : 10%;
-    padding-left : 18px;
-    padding-right : 18px;
-    padding-bottom : 12px;
-    padding-top : 10px;
-}
+
+
 .logo{
     display : flex;
     flex-direction : row
@@ -98,96 +65,68 @@ hr{
     width : 20%;
     height : 100%;
 }
-.footer{
-    background-color : black;
-    display : flex;
-    flex-direction : row;
-    width : auto;
-    margin : 0;
+
+.btn-log{
+    font-size : 17px;
+    text-decoration : none;
+    color : black;
+    background-color : rgb(255,179,32);
+    border : 1px solid rgb(255,179,32);
+    border-radius : 50px;
+    width : 100px;
+    text-align : center;
+    padding-top : 4px;
+    padding-right : 20px;
+    padding-left : 20px;
+    padding-bottom : 5px;
+    margin-left : auto;
+    margin-bottom : 5px;
 }
-.footer .part1{
-    background-color: rgb(255,179,32);
-    color : white;
-    font-size : 20px;
-    padding-top : 1%;
-    padding-bottom : 1%;
-    padding-left : 20%;
-    padding-right : 5%;
-}
-.footer .part2{
-    display : flex ;
-    flex-direction : row;
-    justify-content : space-between ;
-    padding-top : 1%;
-    padding-bottom : 1%;
-}
-.msg{
-    display : flex;
-    flex-direction : row;
-    color : white;
-    padding-left : 40%;
-    width : 400px;
-    color : white;
-    padding-right : 5%;
-}
-.msg svg{
-    padding-right : 5%;
-    padding-bottom: 2%;
-    color : white;
-    
-}
-.copyright{
-    display: flex;
-    flex-direction : row;
-    color : white;
-}
-.copyright svg{
-    color : white;
-    font-size : 8px;
-    padding-right : 5%;
-    padding-bottom: 4%;
+.placelog{
+  margin-right : 5%;
+  margin-left : auto;
 }
 
 </style>
 
 <div class="navigation">
-  <div class="logo"><img src="https://cdn2.vectorstock.com/i/thumbs/53/56/panther-head-vector-27995356.jpg"/>E-<span>Sports</span></div> 
+  <div class="logo"><img src="https://cdn2.vectorstock.com/i/thumbs/53/56/panther-head-vector-27995356.jpg"/><a href="/">E-<span>Sports</span></a></div> 
    
-  <ul>
+
     <%if !(user_signed_in?) %>
 
       <ul>
-      <li>Home</li>
-      <li>Blog</li>
-      <li>Contact</li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/home/document">Blog</a></li>
+      <li><a href= '/home/contact'>Contact</a></li>
       </ul>
-      <a href="/users/sign_in">Login / Register</a>
+      <a class="alogin" href="/users/sign_in">Login / Register</a>
 
 
     <% elsif  current_user && current_user.has_role?(:admin) %> 
       <ul>
-      <li>Users</li>
-      <li>Matches</li>
-      <li>Team</li>
-      <li>Tournaments</li>
-      <%= button_to "Log out", destroy_user_session_path,method: :delete %>
+      <li><a href="/users">Users</a></li>
+      <li><a href="/matches">Matches</a></li>
+      <li><a href="/teams">Team</a></li>
+      <li><a href="/tournaments">Tournaments</a></li>
       </ul>
- 
-    
+      <div class="placelog">  <%= button_to "Log out", destroy_user_session_path,method: :delete, :class => "btn btn-log"%></div>
     <%elsif  current_user && current_user.has_role?(:player)%>
       <ul>
-      <li>Matches</li>
-      <li>Team</li>
+      <li><a href="/matches">Matches</a></li>
+      <li><a href="/teams">Team</a></li>
       </ul>
-        <a href="/users/sign_out">Log out</a>
+     <div class="placelog">  <%= button_to "Log out", destroy_user_session_path,method: :delete, :class => "btn btn-log"%></div>
 
-    <%elsif  current_user && current_user.has_role?(:organisateur)%>   
-      <a href="/users/sign_in">Login / Register</a>
-      <li><%= link_to "Matches", matches_path %></li>
-      <li><%= link_to "Teams", teams_path %></li>
-      <li><%= link_to "Tournaments", tournaments_path %></li>
+    <%elsif  current_user && current_user.has_role?(:organisateur)%> 
+      <ul>
+      <li><a href="/matches">Matches</a></li>
+      <li><a href="/teams">Team</a></li>
+      <li><a href="/tournaments">Tournaments</a></li>
+      </ul>
+      <div class="placelog">  <%= button_to "Log out", destroy_user_session_path,method: :delete, :class => "btn btn-log"%></div>
+  
     <%end%>
-  </ul>
-
+ 
 </div>
 <hr>
