@@ -42,27 +42,27 @@ class Tournament < ApplicationRecord
       #   team.player_list = teams[1]
       #   team.save
       # end
-      def adjacent(teams)
-        teams.each_slice(2).to_a
-      end
+      # def adjacent(teams)
+      #   teams.each_slice(2).to_a
+      # end
 
-      def fold(teams)
-        top, bottom = teams.each_slice(teams.length / 2).to_a
+      # def fold(teams)
+      #   top, bottom = teams.each_slice(teams.length / 2).to_a
 
-        bottom.reverse!
+      #   bottom.reverse!
 
-        top.zip(bottom).to_a
-      end
+      #   top.zip(bottom).to_a
+      # end
 
-      def slide(teams)
-        top, bottom = teams.each_slice(teams.length / 2).to_a
+      # def slide(teams)
+      #   top, bottom = teams.each_slice(teams.length / 2).to_a
 
-        top.zip(bottom).to_a
-      end
+      #   top.zip(bottom).to_a
+      # end
       
-      def random(teams)
-        adjacent(teams.shuffle)
-      end
+      # def random(teams)
+      #   adjacent(teams.shuffle)
+      # end
 
 end
 
