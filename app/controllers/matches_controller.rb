@@ -15,12 +15,20 @@ class MatchesController < ApplicationController
         end
   end
 
-    def new
+     def new
         @match = Match.new
     end
 
     def show
       begin
+        @match = Match.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        match = nil
+      end
+    end
+     
+      def destroy
+
         @match = Match.find(params[:id])
       rescue ActiveRecord::RecordNotFound => e
         match = nil

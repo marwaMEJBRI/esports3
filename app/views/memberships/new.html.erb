@@ -1,0 +1,29 @@
+<div class="container">   
+ <%= form_with model: @membership do |f| %>
+ 
+    <div>
+        
+ <%= f.hidden_field :user_id, value: current_user.id %> 
+        </div>     
+        
+       <div>   
+ <%= f.hidden_field :team_id %> 
+        </div>
+
+
+
+        <div>   
+        <label> organizator?</label>   
+<%= f.radio_button :organizator, "yes" %>
+<%= f.radio_button :organizator, "no" %>        </div>
+
+         </p>   
+      </div>   
+      <div>   
+        <%= link_to 'Back', { controller: 'memberships', action: 'index'} %>   
+        <%= f.submit 'Create membership' ,{ controller: 'memberships', action: 'create'} %>
+      
+           
+      </div>   
+  <% end %>   
+</div> 

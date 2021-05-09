@@ -1,11 +1,9 @@
 class TournamentsController < ApplicationController
-  def index
+
+def index
          @tournaments = Tournament.all
   end
   
- # def random(teams)
-  #end    
-
 
 def create
   @tournament =Tournament.new(tournament_params)      
@@ -31,6 +29,8 @@ def create
       end
     end
 
+
+         
      def destroy
        @tournament = Tournament.find(params[:id])
        if @tournament.destroy
@@ -41,6 +41,7 @@ def create
          redirect_to tournaments_url
        end
      end
+  
        
      def new
        @tournament = Tournament.new
@@ -64,5 +65,6 @@ def create
       params.require(:tournament).permit(:name, :start_date, :end_date)    
     end 
   end
+
 
 
