@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_19_225725) do
+ActiveRecord::Schema.define(version: 2021_05_05_171606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "match_id", null: false
-    t.text "content"
+  create_table "join_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["match_id"], name: "index_comments_on_match_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["team_id"], name: "index_join_requests_on_team_id"
+    t.index ["user_id"], name: "index_join_requests_on_user_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -36,16 +36,19 @@ ActiveRecord::Schema.define(version: 2021_04_19_225725) do
     t.integer "tournament_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.string "recipient_type", null: false
-    t.bigint "recipient_id", null: false
-    t.string "type", null: false
-    t.jsonb "params"
-    t.datetime "read_at"
+  create_table "memberships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id"
+    t.boolean "organizator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["read_at"], name: "index_notifications_on_read_at"
-    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
+  create_table "organizers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tournament_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "players", force: :cascade do |t|
@@ -54,7 +57,6 @@ ActiveRecord::Schema.define(version: 2021_04_19_225725) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
     t.bigint "team_id"
   end
 
@@ -75,12 +77,19 @@ ActiveRecord::Schema.define(version: 2021_04_19_225725) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
+  create_table "rosters", force: :cascade do |t|
+    t.string "name"
+    t.integer "team_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tournament_id"
-    t.integer "player_id"
     t.bigint "match_id"
   end
 
@@ -116,8 +125,8 @@ ActiveRecord::Schema.define(version: 2021_04_19_225725) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
-  add_foreign_key "comments", "matches"
-  add_foreign_key "comments", "users"
+  add_foreign_key "join_requests", "teams"
+  add_foreign_key "join_requests", "users"
   add_foreign_key "players", "teams"
   add_foreign_key "teams", "matches"
   add_foreign_key "tournaments", "matches"

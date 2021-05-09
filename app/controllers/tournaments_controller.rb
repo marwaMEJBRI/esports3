@@ -1,10 +1,8 @@
 class TournamentsController < ApplicationController
-  def index
+
+   def index
          @tournaments = Tournament.all
   end
-  
- # def random(teams)
-  #end    
 
 
 def create
@@ -31,7 +29,7 @@ def create
       end
     end
 
-     def destroy
+ def destroy
        @tournament = Tournament.find(params[:id])
        if @tournament.destroy
          flash[:success] = 'tournament was successfully deleted.'
@@ -64,5 +62,6 @@ def create
       params.require(:tournament).permit(:name, :start_date, :end_date)    
     end 
   end
+
 
 

@@ -2,6 +2,15 @@ class Tournament < ApplicationRecord
     validates :name, presence: true
     has_many :matches
     has_many :teams
+    has_many :organizers
+    # Below is likely working but connectivity was not fully checked
+  # has_many :organizer_users, through: :admins, source: :user
+  
+  
+  
+  
+  
+  
    # def get_all_available_players
         #@players = Player.where('isavailable is true').order('name')
   #  end
@@ -56,3 +65,4 @@ class Tournament < ApplicationRecord
       # end
 
 end
+
