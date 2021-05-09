@@ -13,9 +13,8 @@ class MatchesController < ApplicationController
           flash[:notice] = "Error creating new match!"
           render :new
         end
-  end
 
-    def new
+       def new
         @match = Match.new
     end
 
@@ -26,6 +25,8 @@ class MatchesController < ApplicationController
         match = nil
       end
     end
+   
+
    
     def destroymemm
       @match = Match.find(params[:id])
