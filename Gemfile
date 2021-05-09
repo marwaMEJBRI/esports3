@@ -18,7 +18,6 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
-gem 'bootsnap', '>= 1.4.4', require: false
 gem 'simple_form'
 gem 'byebug'
 gem 'rolify'
@@ -26,7 +25,8 @@ gem 'ransack'
 gem 'faker'
 #gem 'noticed', '~> 1.3', '>= 1.3.2'
 gem 'rails_admin'
-
+gem 'bootstrap', '~> 4.0'
+gem 'bootsnap'
 #group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
  # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

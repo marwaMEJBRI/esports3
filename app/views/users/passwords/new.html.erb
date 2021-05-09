@@ -1,18 +1,304 @@
-<h2>Forgot your password?</h2>
-<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">   
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email, :class => "block text-grey-darker text-sm font-bold mb-2" %><br />
-    <%= f.email_field :email,:class=>"shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker", autofocus: true, autocomplete: "email" %>
-  </div>
+<style>
+.footer{
+    background-color : black;
+    display : flex;
+    flex-direction : row;
+    width : auto;
+    clear: both;
+    position: relative;
+    margin-top: 190px;
+}
+.footer .part1{
+    background-color: rgb(255,179,32);
+    color : white;
+    font-size : 20px;
+    padding-top : 1%;
+    padding-bottom : 1%;
+    padding-left : 20%;
+    padding-right : 5%;
+}
+.footer .part2{
+    display : flex ;
+    flex-direction : row;
+    justify-content : space-between ;
+    padding-top : 1%;
+    padding-bottom : 1%;
+}
+.msg{
+    display : flex;
+    flex-direction : row;
+    color : white;
+    padding-left : 40%;
+    width : 400px;
+    color : white;
+    padding-right : 5%;
+}
+.msg svg{
+    padding-right : 5%;
+    padding-bottom: 2%;
+    color : white;
+    
+}
+.copyright{
+    display: flex;
+    flex-direction : row;
+    color : white;
+}
+.copyright svg{
+    color : white;
+    font-size : 8px;
+    padding-right : 5%;
+    padding-bottom: 4%;
+}
+.msg:hover{
+    color : rgb(255,179,32);
+}
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Text Align */
+.text-c {
+    text-align: center;
+}
+.text-l {
+    text-align: left;
+}
+.text-r {
+    text-align: right
+}
+.text-j {
+    text-align: justify;
+}
+
+/* Text Color */
+.text-whitesmoke {
+    color: whitesmoke;
+    font-size: 20px;
+}
+.text-darkyellow {
+    color: rgb(255,179,32);
+    font-size: 20px;
+}
+
+.text-darkyellow:hover
+{
+text-decoration:underline;
+}
+
+/* Lines */
+
+.line-b {
+    border-bottom: 1px solid #FFEB3B !important;
+}
+
+/* Buttons */
+.button {
+    border-radius: 3px;
+}
+.form-button {
+   background-color: rgb(255,179,32);
+    border-color: rgb(255,179,32);
+    color:black;
+}
+.form-button:hover,
+.form-button:focus,
+.form-button:active,
+.form-button.active,
+.form-button:active:focus,
+.form-button:active:hover,
+.form-button.active:hover,
+.form-button.active:focus {
+    background-color: rgb(255,179,32);
+    border-color: rgb(255,179,32);
+    color: black;
+}
+.form-button:hover{
+  box-shadow : 2px 1px 8px 2px rgb(255,179,32);
+  }
+.button-l {
+    width: 100% !important;
+}
+
+/* Margins g(global) - l(left) - r(right) - t(top) - b(bottom) */
+
+.margin-g {
+    margin: 15px;
+}
+.margin-g-sm {
+    margin: 10px;
+}
+.margin-g-md {
+    margin: 20px;
+}
+.margin-g-lg {
+    margin: 30px;
+}
+
+.margin-l {
+    margin-left: 15px;
+}
+.margin-l-sm {
+    margin-left: 10px;
+}
+.margin-l-md {
+    margin-left: 20px;
+}
+.margin-l-lg {
+    margin-left: 30px;
+}
+
+.margin-r {
+    margin-right: 15px;
+}
+.margin-r-sm {
+    margin-right: 10px;
+}
+.margin-r-md {
+    margin-right: 20px;
+}
+.margin-r-lg {
+    margin-right: 30px;
+}
+
+.margin-t {
+    margin-top: 15px;
+}
+.margin-t-sm {
+    margin-top: 10px;
+}
+.margin-t-md {
+    margin-top: 20px;
+}
+.margin-t-lg {
+    margin-top: 30px;
+}
+
+.margin-b {
+    margin-bottom: 15px;
+}
+.margin-b-sm {
+    margin-bottom: 10px;
+}
+.margin-b-md {
+    margin-bottom: 20px;
+}
+.margin-b-lg {
+    margin-bottom: 30px;
+}
+
+/* Bootstrap Form Control Extension */
+
+.form-control,
+.border-line {
+    background-color: #5f5f5f;
+    background-image: none;
+    border: 1px solid #424242;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}
+.form-control:focus,
+.border-line:focus {
+    border-color: #FFEB3B;
+    background-color: #616161;
+    color: #e6e6e6;
+}
+.form-control,
+.form-control:focus {
+    box-shadow: none;
+}
+
+.form-control::-webkit-input-placeholder { color: #BDBDBD; }
+
+/* Container */
+
+.container-content {
+    background-color: #3a3a3aa2;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: rgb(255,179,32);
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+}
+
+/* Backgrounds */
+
+.main-bg {
+
+    background: #424242;
+    background: linear-gradient( #424242, #212121);
+}
+
+/* Login & Register Pages*/
+
+.login-container {
+    max-width: 400px;
+    z-index: 100;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+.login.login-container {
+    width: 300px;
+}
+.wrapper.login-container {
+    margin-top: 140px;
+}
+.logo-badge {
+    color: #e6e6e6;
+    font-size: 80px;
+    font-weight: 800;
+    letter-spacing: -10px;
+    margin-bottom: 0;
+}
+</style>
+
+<body class="main-bg">
+        <div class="login-container text-c animated flipInX">
+                <div>
+                    <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+                </div>
+                    <h3 class="text-whitesmoke">Forgot your password</h3></br>
+                <div class="container-content">
+                    <form class="margin-t">
+                   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Email" id= <%= f.email_field :email%></br>
+                        </div>
+                         <%= f.submit "Send me reset password instructions", :class => "form-button button-l margin-b"  %></br>
+                        <a class="text-darkyellow" href="/users/sign_in"><small>Sign In</small></a></br>
+                    <%end%>
+                    </form>
+                </div>
+            </div>
+</body>
+
+<div class="footer">
+<div class="part1">Have a question ?</div>
+
+
+<div class="part2">
+
+<div class="msg" alt="marwamejbri1997@gmail.com">
+<svg class="h-8 w-8 text-red-400"   viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="3" y="5" width="18" height="14" rx="2" />  <polyline points="3 7 12 13 21 7" /></svg>
+<a href="mailto:marwa.mejbri@ismai.u-kairouan.tn">send a message</a>
+ </div>
+
+<div class="copyright">
+<svg class="h-8 w-8 text-red-500"  viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="12" r="9" />  <path d="M14.5 9a3.5 4 0 1 0 0 6" /></svg>
+Copyright 2021.
 </div>
 
-<% end %>
+</div>
 
-<%= render "users/shared/links" %>
