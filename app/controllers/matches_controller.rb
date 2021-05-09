@@ -22,7 +22,6 @@ class MatchesController < ApplicationController
         rescue ActiveRecord::RecordNotFound => e
           match = nil
         end
-
       end
      
       def destroy
