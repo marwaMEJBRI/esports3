@@ -1,9 +1,11 @@
 class TournamentsController < ApplicationController
 
+
 def index
          @tournaments = Tournament.all
   end
   
+
 
 def create
   @tournament =Tournament.new(tournament_params)      
@@ -20,8 +22,9 @@ def create
        def new
          @tournament = Tournament.new
        end
-     end
-     def show
+
+ def show
+
       begin
         @tournament = Tournament.find(params[:id])
       rescue ActiveRecord::RecordNotFound => e
@@ -30,18 +33,22 @@ def create
     end
 
 
+
          
-     def destroy
+
+
+ def destroy
        @tournament = Tournament.find(params[:id])
        if @tournament.destroy
          flash[:success] = 'tournament was successfully deleted.'
          
+
        else
          flash[:error] = 'Something went wrong'
          redirect_to tournaments_url
        end
      end
-  
+
        
      def new
        @tournament = Tournament.new
