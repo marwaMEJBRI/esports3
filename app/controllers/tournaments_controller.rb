@@ -20,8 +20,7 @@ def create
        def new
          @tournament = Tournament.new
        end
-     end
-     def show
+ def show
       begin
         @tournament = Tournament.find(params[:id])
       rescue ActiveRecord::RecordNotFound => e
