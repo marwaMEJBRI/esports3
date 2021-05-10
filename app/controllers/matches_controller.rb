@@ -13,8 +13,9 @@ class MatchesController < ApplicationController
           flash[:notice] = "Error creating new match!"
           render :new
         end
+  end
 
-       def new
+     def new
         @match = Match.new
     end
 
@@ -25,8 +26,14 @@ class MatchesController < ApplicationController
         match = nil
       end
     end
-   
+     
+      def destroy
 
+        @match = Match.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        match = nil
+      end
+    end
    
     def destroymemm
       @match = Match.find(params[:id])
@@ -53,6 +60,6 @@ private
 def match_params   
 params.require(:match).permit(:name, :result, :brodcast_link, :start_date, :end_date, :tournament_id)   
 end
-end   
+   
   
 

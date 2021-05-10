@@ -3,23 +3,19 @@
 <div class="container">   
   <%= simple_form_for @team  do |f| %>   
       
+    <label>Name</label>   
+        <%= f.text_field :name %> </br>
+    </div>
+
+   <label>Tournament</label>   
+        <%= f.text_field :tournament_id%></br>   
+    </div> 
+
+   <label>Match</label>   
+        <%= f.text_field :match_id %></br>   
+    </div>
       <div>   
- <label>name</label> 
-        <%= f.text_field :name, class: "form-input flex-1 block w-full rounded-none rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
- 
-        </div> 
-       
- 
-    <div>
-    <label>tournament_id<label>
 
- <%= f.text_field  :tournament_id, class: "form-input flex-1 block w-full rounded-none rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
-     </div> 
-      <div>
-    <label>match_id<label>
-
- <%= f.text_field  :match_id, class: "form-input flex-1 block w-full rounded-none rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
-     </div> 
       <div>   
         <%= link_to 'Back', { controller: 'teams', action: 'index'} %>   
         <%= f.submit 'Create team' ,{ controller: 'teams', action: 'create'} %>   
