@@ -1,13 +1,18 @@
 
 
 <div class="container">   
-  <%= simple_form_for @team  do |f| %>   
-      
+      <%= form_with model: @team do |f| %>
       <div>   
  <label>name</label> 
         <%= f.text_field :name, class: "form-input flex-1 block w-full rounded-none rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
- 
-        </div>   
+               
+
+        </div>  
+         <label>tournament name</label> 
+        <%= f.text_field :name, class: "form-input flex-1 block w-full rounded-none rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+
+        </div>  
+
         
    
       <div>   
