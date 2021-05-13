@@ -1,6 +1,7 @@
 
 
 <div class="container">   
+
       <%= form_with model: @team do |f| %>
       <div>   
  <label>name</label> 
@@ -9,12 +10,14 @@
 
         </div>  
          <label>tournament name</label> 
-        <%= f.text_field :name, class: "form-input flex-1 block w-full rounded-none rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+        <%= f.text_field :tournament_name class: "form-input flex-1 block w-full rounded-none rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
 
         </div>  
 
         
    
+</div>
+
       <div>   
         <%= link_to 'Back', { controller: 'teams', action: 'index'} %>   
         <%= f.submit 'Create team' ,{ controller: 'teams', action: 'create'} %>   
