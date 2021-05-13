@@ -7,19 +7,26 @@
 		<thead class="flex w-full text-white bg-gray-800">
 			<tr class="flex w-full mb-4">
 				<th class="w-1/4 p-4">Name</th>
-        <th class="w-1/4 p-4">Tournament</th>
-        <th class="w-1/4 p-4">Match</th>
+
+  				<th class="w-1/4 p-4">Tournament Name</th>
+     				
+
 			</tr>
 		</thead>
     <tbody class="flex flex-col items-center w-full overflow-y-scroll bg-grey-light" style="height: 50vh;">
     <% @teams.each do |team| %>
       <tr class="flex w-full mb-4">
         <td class="w-1/3 px-4 py-3 text-left"><%= team.name %></td>
-        <td class="w-1/3 px-4 py-3 text-left"><%= team.tournament_id %></td>
-        <td class="w-1/3 px-4 py-3 text-left"><%= team.match_id %></td>
+<
+        <td class="w-1/3 px-4 py-3 text-left"><%= team.tournament_name %></td>
+                
+
+
         <td class="px-4 py-3 text-left"><a class="hover:text-blue-500"><%= link_to 'Show',team %></a></td>
         <td class="px-4 py-3 text-left"><a class="hover:text-blue-500"><%= link_to 'Edit', edit_team_path(team) %></a></td>
         <td class="px-4 py-3 text-left"><a class="hover:text-blue-500"><%= link_to 'Destroy', team_path(:id => team.id), :method => :delete%></a></td>
+               
+
       </tr>
     <% end %>
     </tbody>
