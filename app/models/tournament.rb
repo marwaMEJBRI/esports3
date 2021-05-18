@@ -1,8 +1,10 @@
 class Tournament < ApplicationRecord
     validates :name, presence: true
-    has_many :matches
+    #has_many :matches
     has_many :teams
     has_many :organizers
+    has_many :matches
+
     # Below is likely working but connectivity was not fully checked
   # has_many :organizer_users, through: :admins, source: :user
   

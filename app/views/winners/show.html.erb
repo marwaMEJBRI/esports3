@@ -1,0 +1,35 @@
+<style>
+.section{
+    background-image: url("https://img.freepik.com/vecteurs-libre/contexte-du-gagnant-premier-lieu-competition_260559-82.jpg?size=626&ext=jpg&ga=GA1.2.1629570345.1612483200");
+    background-repeat : no-repeat;
+    background-size : cover;
+    width : auto;
+    height : 750px;
+    
+}
+.section{
+    color : black;
+    font-size : 55px;
+   font-family: 'Newsreader', serif;
+}
+.texte{
+   padding-top : 20%;
+   padding-left : 10%;
+}
+.section span{
+    color : red;
+    padding-left : 17%;
+}
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,500&display=swap');
+
+</style>
+
+<div class="section">
+    <div class="texte"> The winner is: <%= @winner.name%> </div>      
+    <span>  with score <%= @winner.score%> </span></br>
+</div>
+</div>
+
+
+<!--<P><%= @winner.name%> with score <%= @winner.score%> </p>-->
+

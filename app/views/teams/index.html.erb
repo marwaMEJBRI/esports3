@@ -1,33 +1,85 @@
-<p id="notice"><%= notice %></p>
+ <style>
+.sectiontab{
+    margin-top : 4%;
+    margin-bottom : 2%;
+    display : flex;
+    flex-direction : column;
+}
+table{
+    width : 1000px;
+    border : 1px solid black;
+    table-layout : fixed;
+    margin-left : auto;
+    margin-right : auto;
+    
+ }
+ th {
+  border: 1px solid black;
+  text-align : center;
+  background-color : black;
+  color : rgb(255,179,32);
+  font-weight : normal;
+  font-size : 15px;
+  padding-top : 10px;
+  padding-bottom : 10px;
+}
+td{
+  border: 1px solid black;
+  text-align : center;
+  font-weight : normal;
+  font-size : 15px;
+  padding-top : 6px;
+  padding-bottom : 6px;
+  
+}
+.sectiontab .alienbtn{
+    background-color : rgb(255,179,32);
+    width : 130px;
+    text-align : center;
+    border : 1px solid rgb(255,179,32); 
+    border-radius : 50px;
+    color : white;
+    font-size : 15px;
+    margin-left : 13.5%;
+    margin-top : 3%;
+    padding-left : 15px;
+    padding-right : 15px;
+    padding-top : 3px;
+    padding-bottom : 3px;
+}
 
-<h1 class="my-8 text-4xl font-semibold text-gray-700">Teams</h1>
-<div class="w-full px-4 mb-12 xl:w-8/12 xl:mb-0">
-<div class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-white rounded shadow-lg">
-	<table class="w-full text-left">
-		<thead class="flex w-full text-white bg-gray-800">
-			<tr class="flex w-full mb-4">
-				<th class="w-1/4 p-4">Name</th>
-        <th class="w-1/4 p-4">Tournament</th>
-        <th class="w-1/4 p-4">Match</th>
-			</tr>
-		</thead>
-    <tbody class="flex flex-col items-center w-full overflow-y-scroll bg-grey-light" style="height: 50vh;">
-    <% @teams.each do |team| %>
-      <tr class="flex w-full mb-4">
-        <td class="w-1/3 px-4 py-3 text-left"><%= team.name %></td>
-        <td class="w-1/3 px-4 py-3 text-left"><%= team.tournament_id %></td>
-        <td class="w-1/3 px-4 py-3 text-left"><%= team.match_id %></td>
-        <td class="px-4 py-3 text-left"><a class="hover:text-blue-500"><%= link_to 'Show',team %></a></td>
-        <td class="px-4 py-3 text-left"><a class="hover:text-blue-500"><%= link_to 'Edit', edit_team_path(team) %></a></td>
-        <td class="px-4 py-3 text-left"><a class="hover:text-blue-500"><%= link_to 'Destroy', team_path(:id => team.id), :method => :delete%></a></td>
-      </tr>
-    <% end %>
-    </tbody>
-    </table>
-  </div>
-</div>
-  </div>
-    </div>
+.lien:hover{
+  color: rgb(255,179,32);
+}
+.liens{   
+}
+.sectiontab .alienbtn:hover{
+  box-shadow : 2px 1px 12px 2px rgb(255,179,32);
+}
 
-<%= link_to 'New team', new_team_path %>
+ </style>
 
+ <div class="sectiontab">
+ <table>
+ <tr>
+ <th>Team name</th>
+ <th>Tournament name</th>
+ <th>Action</th>
+ </tr>
+ <tr>
+ <% @teams.each do |team| %>
+ <td><%= team.name %></td>
+ <td><%= team.tournament_name %></td>
+ 
+ <td class="liens">
+    <%= link_to 'Show',team , :class => "lien" %>
+    <%= link_to 'Edit', edit_team_path(team) , :class => "lien" %>
+    <%= link_to 'Destroy', team_path(:id => team.id), :method => :delete, :class => "lien" %>
+ </td>
+
+ </tr>
+  <% end %>
+ </table>
+ <a class="alienbtn" <%= link_to 'New team', new_team_path %> </a>
+
+ </div>

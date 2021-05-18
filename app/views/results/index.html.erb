@@ -1,0 +1,90 @@
+ <style>
+.sectiontab{
+    margin-top : 4%;
+    margin-bottom : 2%;
+    display : flex;
+    flex-direction : column;
+}
+table{
+    width : 1000px;
+    border : 1px solid black;
+    table-layout : fixed;
+    margin-left : auto;
+    margin-right : auto;
+    
+ }
+ th {
+  border: 1px solid black;
+  text-align : center;
+  background-color : black;
+  color : rgb(255,179,32);
+  font-weight : normal;
+  font-size : 15px;
+  padding-top : 10px;
+  padding-bottom : 10px;
+}
+td{
+  border: 1px solid black;
+  text-align : center;
+  font-weight : normal;
+  font-size : 15px;
+  padding-top : 6px;
+  padding-bottom : 6px;
+  
+  
+}
+.sectiontab .alienbtn{
+    background-color : rgb(255,179,32);
+    width : 180px;
+    text-align : center;
+    border : 1px solid rgb(255,179,32); 
+    border-radius : 50px;
+    color : white;
+    font-size : 15px;
+    margin-left : 13.5%;
+    margin-top : 3%;
+    padding-left : 15px;
+    padding-right : 15px;
+    padding-top : 3px;
+    padding-bottom : 3px;
+
+}
+.sectiontab .alienbtn:hover{
+  box-shadow : 2px 1px 12px 2px rgb(255,179,32);
+  
+  }
+
+.lien:hover{
+  color: rgb(255,179,32);
+}
+ </style>
+
+ <div class="sectiontab">
+ <table>
+ <tr>
+ <th>Match name</th>
+ <th>Winner</th>
+ <th>Score of team one</th>
+ <th>Score of team two</th>
+ <th>Action</th>
+ </tr>
+ <tr>
+ <% @results.each do |result| %>
+ <td><%= result.match_name %></td>
+ <td><%= result.winner%></td>
+ <td><%= result.score_team_one %></td>
+ <td><%= result.score_team_two %></td>
+ 
+ <td class="liens">
+    <%= link_to 'Show', result , :class => "lien" %>
+    <%=  link_to 'Edit', edit_result_path(result) , :class => "lien" %>
+ </td>
+
+ </tr>
+
+ <% end %>
+ </table>
+  <% if current_user && current_user.has_role?(:admin) %> 
+     <a class="alienbtn"  <%= link_to ' New Match Result', new_result_path %> </a>
+  <%end%>
+ </div>

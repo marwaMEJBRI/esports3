@@ -1,0 +1,62 @@
+ <style>
+            .sectionformulaire{
+                display : flex;
+                flex-direction: column;
+                width : 500px;
+                margin-top: 5%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .sectionformulaire input{
+                margin-bottom: 5%;
+                border : 1px solid black;
+                padding-top: 5%;
+                border-left: none;
+                border-right: none;
+                border-top: none;
+                width : 500px;
+            }
+           .sectionformulaire input:focus{
+               outline-style: none;
+               border-bottom : 1px solid rgb(255,179,32);
+           }
+            .btns{
+                display: flex;
+                flex-direction: row;
+                margin-bottom : 8%;
+            }
+            .btndroite, .btngauche{
+                border : 1px solid rgb(255,179,32);
+                background-color: rgb(255,179,32);
+                text-decoration: none;
+                color: white;
+                text-align: center;
+                border-radius: 30px;
+                width: 200px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 6%;
+                padding : 0;
+            }
+            .btndroite:hover, .btngauche:hover{
+                box-shadow : 1px 1px 10px 1px rgb(255,179,32);
+            }
+        </style>
+ <div class="sectionformulaire">
+ <%= form_with model: @result do |f| %>
+        <input type="text" placeholder="Match name" id= <%= f.text_field :match_name %></br>
+        
+        <input type="number_field" placeholder="Score team one" id=<%= f.number_field :score_team_one %></br>
+
+        <input type="number_field" placeholder="core team two" id=<%= f.number_field :score_team_two%> </br>
+
+        <input type="text" placeholder="score of team one" id=<%= f.text_field :team_one %></br>
+        
+        <input type="text" placeholder="score of team two" id=<%= f.text_field :winner %>
+
+        <div class="btns">
+          <a class="btndroite" <%= link_to 'Back', results_path  %> </a>
+          <%= f.button 'update' ,  controller: 'results', action: 'edit', :class =>"btngauche" %>
+        </div>         
+ <%end%>       
+    </div>

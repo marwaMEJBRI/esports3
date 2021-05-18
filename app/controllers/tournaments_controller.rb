@@ -1,30 +1,23 @@
 class TournamentsController < ApplicationController
-
-
-def index
+  def index
          @tournaments = Tournament.all
   end
-  
-
-
-def create
-  @tournament =Tournament.new(tournament_params)      
-     respond_to do |format|
-         if @tournament.save
-           flash[:notice] = 'tournament was successfully created.'
-           format.html { redirect_to(@tournament) }
-         else
-           format.html { render action: "new" }
-         end
-        end 
  
+  def new
+    @tournament = Tournament.new
+  end
 
-       def new
-         @tournament = Tournament.new
-       end
-
- def show
-
+  def create
+    @tournament = Tournament.new(tournament_params)
+    if  @tournament.save
+      flash[:notice] = "Tournament was submitted succsefully"
+      redirect_to (@tournament)
+    else
+      render :new
+    end 
+  end
+      
+     def show
       begin
         @tournament = Tournament.find(params[:id])
       rescue ActiveRecord::RecordNotFound => e
@@ -32,30 +25,22 @@ def create
       end
     end
 
-
-
-         
-
-
- def destroy
+     def destroy
        @tournament = Tournament.find(params[:id])
        if @tournament.destroy
          flash[:success] = 'tournament was successfully deleted.'
          
-
        else
          flash[:error] = 'Something went wrong'
          redirect_to tournaments_url
        end
      end
-
        
-     def new
-       @tournament = Tournament.new
-     end
+    
      def edit   
        @tournament = Tournament.find(params[:id])   
-     end   
+     end
+
      def update
       respond_to do |format|
         @tournament = Tournament.find(params[:id])
@@ -66,12 +51,15 @@ def create
            end
       end
     end
+
+    def winner_tournament 
+      @winner = Winner.winner_tournament
+      format.html {redirect_towinner_tournament_path }  
+     end
+
     private
   
     def tournament_params   
-      params.require(:tournament).permit(:name, :start_date, :end_date)    
+      params.require(:tournament).permit(:name, :start_date, :end_date, :winner, :match_id, :team_id, :number_of_matches)    
     end 
   end
-
-
-

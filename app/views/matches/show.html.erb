@@ -1,34 +1,85 @@
+ <style>
+.sectiontab{
+    margin-top : 4%;
+    margin-bottom : 2%;
+    display : flex;
+    flex-direction : column;
+}
+table{
+    width : 1000px;
+    border : 1px solid black;
+    table-layout : fixed;
+    margin-left : auto;
+    margin-right : auto;
+    
+ }
+ th {
+  border: 1px solid black;
+  text-align : center;
+  background-color : black;
+  color : rgb(255,179,32);
+  font-weight : normal;
+  font-size : 15px;
+  padding-top : 10px;
+  padding-bottom : 10px;
+}
+td{
+  border: 1px solid black;
+  text-align : center;
+  font-weight : normal;
+  font-size : 15px;
+  padding-top : 6px;
+  padding-bottom : 6px;
+  
+}
+.sectiontab .alienbtn{
+    background-color : rgb(255,179,32);
+    width : 130px;
+    text-align : center;
+    border : 1px solid rgb(255,179,32); 
+    border-radius : 50px;
+    color : white;
+    font-size : 15px;
+    margin-left : 13.5%;
+    margin-top : 3%;
+    padding-left : 15px;
+    padding-right : 15px;
+    padding-top : 3px;
+    padding-bottom : 3px;
+}
+.sectiontab .alienbtn:hover{
+  box-shadow : 2px 1px 12px 2px rgb(255,179,32);
+  
+  }
 
-<p id="notice"><%= notice %></p>
-<h1 class="my-8 text-4xl font-semibold text-gray-700"> Match Name: &nbsp; <%= @match.name if @match %> </h1>
-<div class="w-full px-4 mb-12 xl:w-8/12 xl:mb-0">
-  <div class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-white rounded shadow-lg">
-    <table class="items-center w-full bg-transparent border-collapse">
-      <thead>
-        <tr>
-          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">Name</th>
-          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">tournament_id</th>
+.lien:hover{
+  color: rgb(255,179,32);
+}
+.liens{
+    
+    
+}
+ </style>
 
-          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">Result</th>
-          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">Brodcast Link</th>
-          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">Start date</th>
-          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid">End date</th>
+ <div class="sectiontab">
+ <table>
+ <tr>
+ <th>Match name</th>
+ <th>Brodcast link</th>
+ <th>Start date</th>
+ <th>End date</th>
+ <th>Team one</th>
+ <th>Team two</th>
+ </tr>
+ <tr>
+ <td><%= @match.name if @match %></td>
+ <td><%= @match.brodcast_link if @match %></td>
+ <td><%= @match.start_date if @match %></td>
+ <td><%= @match.end_date if @match%></td>
+ <td><%= @match.team_one %></td>
+ <td><%= @match.team_two %></td>
+ </tr>
 
-          <th class="px-6 py-3 text-xs font-semibold text-left text-gray-600 uppercase whitespace-no-wrap align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid", colspan="4"></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.name if @match %></td>
-                        <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.tournament_id if @match %></td>
-
-           <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%=  @match.result if @match%></td>
-            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.brodcast_link if @match%></td>
-            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.start_date if @match%></td>
-            <td class="p-4 px-6 text-xs text-left whitespace-no-wrap align-middle border-t-0 border-l-0 border-r-0"><%= @match.end_date if @match%></td>
-
-          </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+ </table>
+ <a class="alienbtn" <%= link_to 'Back', matches_path %> </a>
+ </div>

@@ -1,6 +1,6 @@
 class Membership < ApplicationRecord
     belongs_to :user
-    belongs_to :team
+   # belongs_to :team
   
     validates_uniqueness_of :team_id, scope: :user_id
 end

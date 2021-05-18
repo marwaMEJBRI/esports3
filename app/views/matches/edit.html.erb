@@ -1,38 +1,64 @@
-
-
-  <div class="field">
-    <%= simple_form_for @match  do |f| %>  
-  <div>
-    <label>Name</label>   
-      <%= f.text_field :name %>   
-  </div>   
-  
-    <div>   
-      <label>Result</label>   
-       <%= f.text_field :result %>   
-    </div>   
-        <div>   
-        <label>Brodcast Link</label>   
-        <%= f.text_field :brodcast_link %>   
-       </div>
-       <div>   
-       <label>start date</label>   
-       <%= f.datetime_field :start_date%>   
-        </div>
-        <div>   
-        <label> End date</label>   
-        <%= f.datetime_field :end_date %>   
-        </div>
+ <style>
+            .sectionformulaire{
+                display : flex;
+                flex-direction: column;
+                width : 500px;
+                margin-top: 5%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .sectionformulaire input{
+                margin-bottom: 5%;
+                border : 1px solid black;
+                padding-top: 5%;
+                border-left: none;
+                border-right: none;
+                border-top: none;
+                width : 500px;
+            }
+           .sectionformulaire input:focus{
+               outline-style: none;
+               border-bottom : 1px solid rgb(255,179,32);
+           }
+            .btns{
+                display: flex;
+                flex-direction: row;
+                margin-bottom : 8%;
+            }
+            .btndroite, .btngauche{
+                border : 1px solid rgb(255,179,32);
+                background-color: rgb(255,179,32);
+                text-decoration: none;
+                color: white;
+                text-align: center;
+                border-radius: 30px;
+                width: 200px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 6%;
+                padding : 0;
+            }
+            .btndroite:hover, .btngauche:hover{
+                box-shadow : 1px 1px 10px 1px rgb(255,179,32);
+            }
+        </style>
+ <div class="sectionformulaire">
+ <%= form_with model: @match do |f| %>
+        <input type="text" placeholder="Name" id= <%= f.text_field :name %></br>
         
-        <div>   
-        <label> Tournament_id</label>   
-        <%= f.text_field :tournament_id %>   
-        </div>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit 'update' , { controller: 'matches', action: 'edit'} %>
-  </div>
-       <%end%>   
+        <input type="text" placeholder="Brodcast_link" id=<%= f.text_field :brodcast_link %></br>
 
-<%= link_to 'Back', match_path %>
+        <input placeholder="Star_date" id=<%= f.datetime_field :start_date%> </br>
+
+        <input placeholder="End_date" id=<%= f.datetime_field :end_date%> </br>
+
+        <input type="text" placeholder="score of team one" id=<%= f.text_field :team_one %></br>
+        
+        <input type="text" placeholder="score of team two" id=<%= f.text_field :team_two %>
+
+        <div class="btns">
+          <a class="btndroite" <%= link_to 'Back', match_path %> </a>
+          <%= f.button 'update' , controller: 'matches', action: 'edit', :class =>"btngauche" %>
+        </div>         
+ <%end%>       
+    </div>

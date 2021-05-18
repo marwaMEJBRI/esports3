@@ -95,8 +95,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-
-
+    diff-lcs (1.4.4)
     erubi (1.10.0)
     execjs (2.7.0)
     faker (1.9.6)

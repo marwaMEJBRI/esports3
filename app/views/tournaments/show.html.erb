@@ -1,28 +1,81 @@
+ <style>
+.sectiontab{
+    margin-top : 4%;
+    margin-bottom : 2%;
+    display : flex;
+    flex-direction : column;
+}
+table{
+    width : 1000px;
+    border : 1px solid black;
+    table-layout : fixed;
+    margin-left : auto;
+    margin-right : auto;
+    
+ }
+ th {
+  border: 1px solid black;
+  text-align : center;
+  background-color : black;
+  color : rgb(255,179,32);
+  font-weight : normal;
+  font-size : 15px;
+  padding-top : 10px;
+  padding-bottom : 10px;
+}
+td{
+  border: 1px solid black;
+  text-align : center;
+  font-weight : normal;
+  font-size : 15px;
+  padding-top : 6px;
+  padding-bottom : 6px;
+  
+}
+.sectiontab .alienbtn{
+    background-color : rgb(255,179,32);
+    width : 130px;
+    text-align : center;
+    border : 1px solid rgb(255,179,32); 
+    border-radius : 50px;
+    color : white;
+    font-size : 15px;
+    margin-left : 13.5%;
+    margin-top : 3%;
+    padding-left : 15px;
+    padding-right : 15px;
+    padding-top : 3px;
+    padding-bottom : 3px;
+}
+.sectiontab .alienbtn:hover{
+  box-shadow : 2px 1px 12px 2px rgb(255,179,32);
+  
+  }
 
+.lien:hover{
+  color: rgb(255,179,32);
+}
+.liens{
+    
+    
+}
+ </style>
 
-<p id="notice"><%= notice %></p>
-<h1 class="font-semibold text-4xl text-gray-700 my-8">Tournament Name: &nbsp;
-<%= @tournament.name if @tournament %></h1>
-<div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-    <table class="items-center w-full bg-transparent border-collapse">
-      <thead>
-        <tr>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Name</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">Start date</th>
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">End date</th>
+ <div class="sectiontab">
+ <table>
+ <tr>
+ <th>Name</th>
+ <th>Start date</th>
+ <th>End date</th>
+ <th>Number of matches</th>
+ </tr>
+ <tr>
+ <td><%= @tournament.name if @tournament %></td>
+ <td><%= @tournament.start_date if @tournament %></td>
+ <td><%= @tournament.end_date if @tournament %></td>
+ <td><%= @tournament.number_of_matches if @tournament %></td>
+ </tr>
 
-          <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left", colspan="3"></th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @tournament.name if @tournament%></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @tournament.start_date if @tournament %></td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"><%= @tournament.end_date if @tournament%></td>
-
-          </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+ </table>
+ <a class="alienbtn" <%= link_to 'Back', tournaments_path %> </a>
+ </div>

@@ -1,34 +1,28 @@
 class TeamsController < ApplicationController
 
+  
   def index
      @teams = Team.all
   end
-
-  def create
-   @team =Team.new(team_params)    
-          if @team.save
-         flash[:notice] = "Successfully created team!"
-         redirect_to teams_path(@team)
-       else
-         flash[:notice] = "Error creating new team!"
-         render :new
-       end
+  def new
+        @team = Team.new
  end
 
-    def new
-      @team = Team.new
-    end
+def show
+  @team = Team.find(params[:id])
+end
+
+def create
+@team =Team.new(team_params)      
+  respond_to do |format|
+      if @team.save
+        flash[:notice] = 'team was successfully created.'
+        format.html { redirect_to(@team) }
+      else
+        format.html { render action: "new" }
+      end
+     end 
    
-  end
-  def show
-   begin
-     @team = Team.find(params[:id])
-   rescue ActiveRecord::RecordNotFound => e
-     team = nil
-   end
- end
-
-
 
  def destroy
    @team = Team.find(params[:id])
@@ -41,24 +35,23 @@ class TeamsController < ApplicationController
    end
  end
 
- def edit   
-   @team = Team.find(params[:id])   
- end   
- def update
-   @team = Team.find(params[:id])
-     if @team.update_attributes(params[:team])
-       flash[:success] = "Team was successfully updated"
-       redirect_to @team
-     else
-       flash[:error] = "Something went wrong"
-       render 'edit'
-     end
-     
+
+  def edit   
+    @team = Team.find(params[:id])   
+  end 
+
+
+  def update
+  @team = Team.find(params[:id])
+  if @team.update(team_params)
+  redirect_to @team
+  else
+  render :edit
+  end
+  end
      private 
      def team_params   
-       params.require(:team).permit(:name, :tournament_id, :match_id)
- end
+       params.require(:team).permit(:name, :tournament_name)   
+     end
 end
-
- 
-
+end
